@@ -1,0 +1,5 @@
+# IGNORE YII FRAMEWORK STUFF
+assets/*
+!.gitignore
+protected/runtime/*
+application.log

@@ -1,0 +1,25 @@
+html, body
+{
+	height:100%;
+}
+
+#page {
+	padding-top: 60px; 
+    position:relative;
+	min-height: 100%;
+}
+
+* html #page {height: 100%;}
+
+#content{
+	padding-bottom: 50px;
+}
+
+#footer
+{
+	font-size: 0.8em;
+	text-align: left;
+	line-height:15px;
+	position:absolute;
+	bottom:0;
+}

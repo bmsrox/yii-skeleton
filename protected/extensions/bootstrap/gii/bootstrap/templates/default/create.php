@@ -8,17 +8,16 @@
 echo "<?php\n";
 $label=$this->pluralize($this->class2name($this->modelClass));
 echo "\$this->breadcrumbs=array(
- 	Yii::t(Yii::app()->language,'$label')=>array('admin'),
-	Yii::t(Yii::app()->language,'Create'),
+ 	\$this->translate('$label')=>array('index'),
+	\$this->translate('Create'),
 );\n";
 ?>
 
 $this->menu=array(
-	//array('label'=>Yii::t(Yii::app()->language,'List'), 'url'=>array('index')),
-	array('label'=>Yii::t(Yii::app()->language,'Manage'), 'url'=>array('admin')),
+	array('label'=>$this->translate('Manage'), 'url'=>array('index')),
 );
 ?>
 
-<h1><?php echo "<?php echo Yii::t(Yii::app()->language,'Create'); ?>"; ?> <?php echo $this->modelClass; ?></h1>
+<h1><?php echo "<?php echo \$this->translate('Create'); ?>"; ?> <?php echo $this->modelClass; ?></h1>
 
 <?php echo "<?php echo \$this->renderPartial('_form', array('model'=>\$model)); ?>"; ?>

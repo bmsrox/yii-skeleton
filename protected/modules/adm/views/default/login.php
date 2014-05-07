@@ -1,28 +1,30 @@
-<div class="form">
-<?php $form=$this->beginWidget('CActiveForm', array(
-	//'id'=>'login-form',
-	'action'=>CController::createUrl('default/login'),
+<?php
+$this->pageTitle=Yii::app()->name . ' - Login';
+?>
+
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+	'id'=>'login-form',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
-	'htmlOptions'=>array('class'=>'form-signin')
+	'htmlOptions'=>array('class'=>'main form-signin')
 )); 
 
 ?>
- <h2 class="form-signin-heading"><?php echo Yii::t(Yii::app()->language,'Please sign in'); ?></h2>
+<h2 class="form-signin-heading"><?php echo $this->translate('Please sign in'); ?></h2>
  
- <div class="row">
-		<?php echo $form->textField($model,'username', array('class'=>'input-block-level', 'placeholder'=>Yii::t(Yii::app()->language,'Email address'))); ?>
-		<?php echo $form->error($model,'username'); ?>
+<?php echo $form->textField($model, 'username', array('class'=>'form-control input-block-level','placeholder'=>$this->translate('Username'))); ?>
+<?php echo $form->passwordField($model, 'password', array('class'=>'form-control input-block-level', 'placeholder'=>$this->translate('Password'))); ?>
+
+<div class="form-btn">
+<?php $this->widget('bootstrap.widgets.TbButton', array(
+	'buttonType'=>'submit',
+	'type'=>'success', 
+	'label'=>$this->translate('Login'),
+	'htmlOptions'=>array('class'=>'btn')
+	  )); 
+?>
 </div>
-<div class="row">
-		<?php echo $form->passwordField($model,'password', array('class'=>'input-block-level', 'placeholder'=>Yii::t(Yii::app()->language,'Password'))); ?>
-		<?php echo $form->error($model,'password'); ?>
-</div>
-	<div class="">
-		<?php echo CHtml::submitButton(Yii::t(Yii::app()->language,'Sign In'), array('class'=>'btn btn-medium btn-primary')); ?>
-	</div>
 
 <?php $this->endWidget(); ?>
-</div><!-- form -->

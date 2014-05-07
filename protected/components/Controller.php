@@ -23,6 +23,11 @@ class Controller extends CController
 
 	public $template = array();
 
+	public function translate($message, $params = array())
+	{
+		return Yii::t(Yii::app()->language,$message,$params);
+	}
+
 	/**
 	 * 
 	 * @param array $template

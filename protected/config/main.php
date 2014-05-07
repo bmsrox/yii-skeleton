@@ -29,7 +29,7 @@ $config = array(
 						'errorHandler' => array(
 								'errorAction' => 'adm/default/error'),
 						'user' => array(
-								'class'          => 'CWebUser',
+								'class'          => 'WebUser',
 								'allowAutoLogin' => true,
 								'stateKeyPrefix' => '_adm',
 								'returnUrl' => array('default/index'), # page after login
@@ -70,6 +70,11 @@ $config = array(
           		'gii/<controller:\w+>'=>'gii/<controller>',
          		'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>', 
 
+         		//RULES MODULE ADM
+				'adm'=>'adm/default/index',
+				'<module>/<action>' => '<module>/default/<action>',
+				'<module>/<action>' => '<module>/<controller>/<action>',
+
 				//RULES OF SITE
 				''=>'site/index',
 				'<action>'=>'site/<action>',
@@ -86,12 +91,12 @@ $config = array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=blog',
+			'connectionString' => 'mysql:host=localhost;dbname=testando',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
 			'charset' => 'utf8',
-			'tablePrefix' => 'tbl_',
+			//'tablePrefix' => 'tbl_',
 		),
 		
 		'errorHandler'=>array(

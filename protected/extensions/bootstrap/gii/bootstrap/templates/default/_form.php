@@ -9,7 +9,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>\n"; ?>
 
-	<p class="note"><?php echo "<?php echo Yii::t(Yii::app()->language,'Fields with'); ?>"; ?><span class="required"> * </span><?php echo "<?php echo Yii::t(Yii::app()->language,'are required'); ?>"; ?>.</p>
+	<p class="note"><?php echo "<?php echo \$this->translate('Fields with'); ?>"; ?><span class="required"> * </span><?php echo "<?php echo \$this->translate('are required'); ?>"; ?>.</p>
 
 	<?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
 
@@ -28,7 +28,7 @@ foreach($this->tableSchema->columns as $column)
 		<?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
 			'type'=>'primary',
-			'label'=>\$model->isNewRecord ? Yii::t(Yii::app()->language,'Create') : Yii::t(Yii::app()->language,'Save'),
+			'label'=>\$model->isNewRecord ? \$this->translate('Create') : \$this->translate('Save'),
 		)); ?>\n"; ?>
 	</div>
 

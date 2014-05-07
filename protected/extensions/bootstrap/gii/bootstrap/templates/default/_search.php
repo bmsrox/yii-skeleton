@@ -16,11 +16,11 @@ foreach($this->tableSchema->columns as $column):
 	break;
 endforeach; 
 ?>
-<?php echo "<?php echo \$form->textFieldRow(\$model, '{$column->name}', array('class'=>'input-xlarge', 'prepend'=>'<i class=\"icon-search\"></i>')); ?>\n"; ?>
+<?php echo "<?php echo \$form->textFieldRow(\$model, 'search', array('class'=>'input-xlarge', 'prepend'=>'<i class=\"icon-search\"></i>')); ?>\n"; ?>
 	
 		<?php echo "<?php \$this->widget('bootstrap.widgets.TbButton', array(
 			'buttonType'=>'submit',
-			'label'=>Yii::t(Yii::app()->language,'Search'),
+			'label'=>\$this->translate('Search'),
 		)); ?>\n"; ?>
 
 

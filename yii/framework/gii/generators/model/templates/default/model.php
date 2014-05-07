@@ -53,6 +53,12 @@
 class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 {
 	/**
+	* @internal variable for search in the session manager
+	*/
+	public $search = null;
+
+	use Translate;
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
@@ -98,8 +104,9 @@ class <?php echo $modelClass; ?> extends <?php echo $this->baseClass."\n"; ?>
 	{
 		return array(
 <?php foreach($labels as $name=>$label): ?>
-			<?php echo "'$name' => Yii::t(Yii::app()->language,'$label'),\n"; ?>
+			<?php echo "'$name' => \$this->translate('$label'),\n"; ?>
 <?php endforeach; ?>
+			<?php echo "'search' => \$this->translate('Search'),\n"; ?>
 		);
 	}
 

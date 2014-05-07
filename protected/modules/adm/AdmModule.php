@@ -2,7 +2,6 @@
 
 class AdmModule extends CWebModule
 {
-
 	public function init()
 	{
 		Yii::app()->name = Yii::t(Yii::app()->language, "Administration");
@@ -32,8 +31,7 @@ class AdmModule extends CWebModule
 		if (parent::beforeControllerAction($controller, $action)) {
 			// this method is called before any module controller action is performed
 			// you may place customized code here
-			Yii::app()->widgetFactory->widgets['CBreadcrumbs']=array('homeLink'=>CHtml::link(Yii::t(Yii::app()->language,'Home'), array('/adm')));
-				
+	
 			$route = $controller->id . '/' . $action->id;
 			// echo $route;
 			$publicPages = array(

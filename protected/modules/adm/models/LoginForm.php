@@ -13,6 +13,8 @@ class LoginForm extends CFormModel
 
 	private $_identity;
 
+	use Translate;
+
 	/**
 	 * Declares the validation rules.
 	 * The rules state that username and password are required,
@@ -36,9 +38,9 @@ class LoginForm extends CFormModel
 	public function attributeLabels()
 	{
 		return array(
-				'rememberMe'=>Yii::t(Yii::app()->language, 'Remember me next time'),
-				'username'=>Yii::t(Yii::app()->language, 'Username'),
-				'password'=>Yii::t(Yii::app()->language, 'Password'),
+				'rememberMe'=>$this->translate('Remember me next time'),
+				'username'=>$this->translate('Username'),
+				'password'=>$this->translate('Password'),
 		);
 	}
 

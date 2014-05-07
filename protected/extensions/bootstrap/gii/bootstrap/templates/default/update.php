@@ -9,20 +9,19 @@ echo "<?php\n";
 $nameColumn=$this->guessNameColumn($this->tableSchema->columns);
 $label=$this->pluralize($this->class2name($this->modelClass));
 echo "\$this->breadcrumbs=array(
-	Yii::t(Yii::app()->language,'$label')=>array('admin'),
+	\$this->translate('$label')=>array('index'),
 	\$model->{$nameColumn}=>array('view','id'=>\$model->{$this->tableSchema->primaryKey}),
-	Yii::t(Yii::app()->language,'Update'),
+	\$this->translate('Update'),
 );\n";
 ?>
 
 $this->menu=array(
-	//array('label'=>Yii::t(Yii::app()->language,'List'), 'url'=>array('index')),
-	array('label'=>Yii::t(Yii::app()->language,'Create'), 'url'=>array('create')),
-	array('label'=>Yii::t(Yii::app()->language,'View'), 'url'=>array('view', 'id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>)),
-	array('label'=>Yii::t(Yii::app()->language,'Manage'), 'url'=>array('admin')),
+	array('label'=>$this->translate('Manage'), 'url'=>array('index')),
+	array('label'=>$this->translate('Create'), 'url'=>array('create')),
+	array('label'=>$this->translate('View'), 'url'=>array('view', 'id'=>$model-><?php echo $this->tableSchema->primaryKey; ?>)),
 );
 ?>
 
-<h1><?php echo "<?php echo Yii::t(Yii::app()->language,'Update'); ?>"; ?> <?php echo $this->modelClass." <?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
+<h1><?php echo "<?php echo \$this->translate('Update'); ?>"; ?> <?php echo $this->modelClass." <?php echo \$model->{$this->tableSchema->primaryKey}; ?>"; ?></h1>
 
 <?php echo "<?php echo \$this->renderPartial('_form',array('model'=>\$model)); ?>"; ?>

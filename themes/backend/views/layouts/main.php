@@ -1,12 +1,9 @@
-<?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8" />
  	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->theme->baseUrl; ?>/css/styles.css" />
-	
 	<?php Yii::app()->bootstrap->register(); ?>
 </head>
 
@@ -15,13 +12,18 @@
 <?php $this->widget('bootstrap.widgets.TbNavbar',array(
 	'brand'=>Yii::app()->name,
 	'brandUrl'=>Yii::app()->getModule('adm')->user->returnUrl,
-		'collapse'=>true,
+	'collapse'=>true,
+	'type'=>'inverse',
     'items'=>array(
         array(
             'class'=>'bootstrap.widgets.TbMenu',
-            'items'=>array(
-                array('label'=>Yii::t(Yii::app()->language,'Home'), 'url'=>array('/adm/default/index')),
-				array('label'=>Yii::t(Yii::app()->language,'Logout').'('.Yii::app()->user->name.')', 'url'=>array('/adm/default/logout'), 'visible'=>!Yii::app()->user->isGuest)
+            'htmlOptions'=>array('class'=>'pull-right'),
+            'items'=>array( 
+            	array('label'=>ucfirst(Yii::app()->user->name), 'icon'=>'user white', 'items'=>array(
+            		array('label'=>$this->translate('Profile'), 'icon'=>'wrench', 'url'=>'#', 'visible'=>!Yii::app()->user->isGuest),
+            		array('label'=>$this->translate('Logout'), 'icon'=>'off', 'url'=>array('/adm/default/logout'), 'visible'=>!Yii::app()->user->isGuest)
+            	) , 'visible'=>!Yii::app()->user->isGuest)      
+				
             ),
         ),
     ),
@@ -32,42 +34,16 @@
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
-			'homeLink'=>CHtml::link(Yii::t(Yii::app()->language,'Dashboard'), array('/adm/default/index'))
+			'homeLink'=>CHtml::link($this->translate('Home'), array('/adm/default/index'))
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>
 
-	<div class="row">
-    
-     <div class="span3">
-        <div id="sidebar">
-        <?php
-
-            $this->widget('bootstrap.widgets.TbMenu', array(
-				'type'=>'tabs',
-				'stacked'=>true,
-                'items'=>array(
-					array('label'=>Yii::t(Yii::app()->language,'Home'), 'icon'=>'home', 'url'=>array('/adm/default/index')),
-				),
-            ));
-           
-        ?>
-        </div><!-- sidebar -->
-    </div>
-    
-    <div class="span9">
-        <div id="content">
-            <?php echo $content; ?>
-        </div><!-- content -->
-    </div>
- 
-	</div>
+    <?php echo $content; ?>
 
 	<div class="clear"></div>
 
 	<div id="footer">
-		<?php echo Yii::t(Yii::app()->language,'Copyright');?> &copy; <?php echo date('Y'); ?> <?php echo Yii::t(Yii::app()->language,'by');?> My Company.<br/>
-		<?php echo Yii::t(Yii::app()->language, 'All Rights Reserved.');?>
-		<br/>
+		<?php echo $this->translate('Copyright');?> &copy; <?php echo date('Y'); ?> <?php echo $this->translate('by');?> My Company.<br/>
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 

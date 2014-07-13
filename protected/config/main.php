@@ -67,13 +67,14 @@ $config = array(
 
 				//RULES GII
 				'gii'=>'gii',
+				'gii/<action>' => 'gii/default/<action>',
           		'gii/<controller:\w+>'=>'gii/<controller>',
          		'gii/<controller:\w+>/<action:\w+>'=>'gii/<controller>/<action>', 
 
          		//RULES MODULE ADM
 				'adm'=>'adm/default/index',
 				'<module>/<action>' => '<module>/default/<action>',
-				'<module>/<action>' => '<module>/<controller>/<action>',
+				//'<module>/<action>' => '<module>/<controller>/<action>',
 
 				//RULES OF SITE
 				''=>'site/index',
